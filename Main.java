@@ -1,5 +1,9 @@
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,16 +17,21 @@ public class Main {
 
 
         try {
-            // Read the JSON content from the file
-            String jsonInput = new String(Files.readAllBytes(Paths.get(filePath)));
+            ObjectMapper objectMapper = new ObjectMapper();
+            File jsonFile = new File(filePath);
 
-            // Build the Registration Sequence
+            // Read the JSON content from the file
+            JsonNode registrationSequenceJson = objectMapper.readTree(jsonFile);
+
+            // Initialize RegistrationSequenceAdapter
             RegistrationSequenceAdapter adapter = new RegistrationSequenceAdapter();
-            RegSequence regSequence = adapter.buildRegSequence(jsonInput);
+
+            // Adapt JSON to nodes
+            RegSequence sequence = adapter.adapt(registrationSequenceJson);
 
             // Print the Registration Sequence
             System.out.println("Registration Sequence built successfully!");
-            for (Node node : regSequence.getNodes().values()) {
+            for (Node node : sequence.getNodes().values()) {
                 System.out.println(node);
             }
         } catch (Exception e) {
