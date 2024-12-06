@@ -1,0 +1,14 @@
+if jnode has multiple actions(EXECUTOR|RULE)
+    create bNode for each action
+    set the next of the action as the pageId of the bNode
+    create a decision bNode
+    set the jNode as the pageId of the decision NodeDTO
+    set all the bNodes as the next nodes of the decision NodeDTO
+if jnode has a single action of type == next
+    // update the nodeDTO with next page
+if jnode has a single action of type == SUBMIT
+    create a bNode of type input collector
+    set jnode ID as the pageId of the bNode
+
+if this jnodeId is pageID of anyOf the bNode, 
+    set the bNode defined here as the nextNodeDTO of the previous bNode
