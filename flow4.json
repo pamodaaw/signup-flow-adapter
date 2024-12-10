@@ -35,7 +35,7 @@
           "action":
             {
               "type": "EXECUTOR",
-              "name": ["PasswordOnboarder"]
+              "name": ["PasswordOnboarder", "EmailOTPVerifier"]
             },
           "next": [
             "flow-node-2"
@@ -45,27 +45,6 @@
     },
     {
       "id": "flow-node-2",
-      "elements": [
-        "flow-display-header-hj6t4D3",
-        "flow-block-attributes-osld3343",
-        "flow-action-email-otp-verifier-5t8uJ6D3"
-      ],
-      "actions": [
-        {
-          "id": "flow-action-email-otp-verifier-5t8uJ6D3",
-          "action":
-            {
-              "type": "EXECUTOR",
-              "name": ["EmailOTPVerifier"]
-            },
-          "next": [
-            "flow-node-3"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "flow-node-3",
       "elements": [
         "flow-display-header-GG456y7",
         "flow-block-attributes-45owsew2",
@@ -82,7 +61,7 @@
                   }
               },
           "next": [
-            "COMPLETE"
+            "flow-node-3"
           ]
         },
         {
@@ -92,7 +71,27 @@
                   "type": "PREVIOUS"
               },
           "previous": [
-            "flow-node-2"
+            "flow-node-1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "flow-node-3",
+      "elements": [
+        "flow-display-header-8uJ6t4D3",
+        "flow-block-attributes-g55dfGuK",
+        "flow-action-submit-p563u9Yn"
+      ],
+      "actions": [
+        {
+          "id": "flow-action-submit-p563u9Yn",
+          "action":
+          {
+            "type": "SUBMIT"
+          },
+          "next": [
+            "COMPLETE"
           ]
         }
       ]

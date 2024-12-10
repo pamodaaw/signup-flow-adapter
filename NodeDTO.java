@@ -9,6 +9,7 @@ class NodeDTO {
     private String type; // Type of the node (e.g., attributeCollectorEX, executor, rule, decision)
     private Map<String, String> pageIds = new HashMap<>();
     private List<String> nextNodes; // List of next node IDs for decision nodes
+    private Map<String, String> properties = new HashMap<>();
 
     public NodeDTO(String id, String type) {
 
@@ -46,6 +47,17 @@ class NodeDTO {
 
         this.pageIds.put(key, value);
     }
+
+    public Map<String, String> getProperties() {
+
+        return this.properties;
+    }
+
+    public void addProperty(String key, String value) {
+
+        this.properties.put(key, value);
+    }
+
 
     @Override
     public String toString() {

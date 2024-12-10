@@ -27,58 +27,65 @@
         {
             "id": "flow-node-1",
             "elements": [
-                "flow-display-header-8uJ6t4D3",
-                "flow-block-attributes-g55dfGuK",
-                "flow-display-horizontal-divider-G6d3t8uJ",
-                "flow-action-google-sign-up-Rt8uJ6D3"
+                "flow-display-header-45wTrU",
+                "flow-block-attributes-er203owe"
             ],
             "actions": [
                 {
-                    "id": "flow-action-password-onboarder-p563u9Yn",
+                    "id": "flow-action-submit-5t8uJ6D3",
                     "action": {
-                        "type": "NEXT"
-                    },
-                    "next": [
-                        "flow-node-2"
-                    ]
-                },
-                {
-                    "id": "flow-action-email-otp-verifier-5t8uJ6D3",
-                    "action": {
-                        "type": "NEXT"
-                    },
-                    "next": [
-                        "flow-node-3"
-                    ]
-                },
-                {
-                    "id": "flow-action-google-sign-up-Rt8uJ6D3",
-                    "action": {
-                        "type": "EXECUTOR",
-                        "name": "GoogleSignUp"
-                    },
-                    "next": [
-                        "flow-node-5"
-                    ]
+                        "type": "SUBMIT"
+                    }
                 }
             ]
         },
         {
             "id": "flow-node-2",
             "elements": [
+                "flow-action-email-otp-verifier-5t8uJ6D3",
+                "flow-action-password-onboarder-p563u9Yn"
+            ],
+            "actions": [
+                {
+                    "id": "flow-action-password-onboarder-p563u9Yn",
+                    "action": {
+                        "type": "EXECUTOR",
+                        "name": ["PasswordOnboarder"]
+                    },
+                    "next": [
+                        "flow-node-3"
+                    ]
+                },
+                {
+                    "id": "flow-action-email-otp-verifier-5t8uJ6D3",
+                    "action": {
+                        "type": "EXECUTOR",
+                        "name": ["EmailOTPVerifier"]
+                    },
+                    "next": [
+                        "flow-node-4"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "flow-node-3",
+            "elements": [
                 "flow-display-header-hj6t4D3",
                 "flow-block-attributes-osld3343",
-                "flow-action-go-back-rtessdf3"
+                "flow-action-next-ggh688op"
             ],
             "actions": [
                 {
                     "id": "flow-action-next-ggh688op",
                     "action": {
-                        "type": "EXECUTOR",
-                        "name": "PasswordOnboarder"
+                        "type": "NEXT",
+                        "meta": {
+                            "actionType": "CREDENTIAL_ONBOARDING"
+                        }
                     },
                     "next": [
-                        "flow-node-5"
+                        "COMPLETE"
                     ]
                 },
                 {
@@ -93,21 +100,23 @@
             ]
         },
         {
-            "id": "flow-node-3",
+            "id": "flow-node-4",
             "elements": [
                 "flow-display-header-rg6pwt0",
                 "flow-block-attributes-53fdsfsp",
-                "flow-action-go-back-er212kfl"
+                "flow-action-next-tyG3hp31"
             ],
             "actions": [
                 {
                     "id": "flow-action-next-tyG3hp31",
                     "action": {
-                        "type": "EXECUTOR",
-                        "name": "EmailOTPVerifier"
+                        "type": "NEXT",
+                        "meta" : {
+                            "actionType": "ATTRIBUTE_ONBOARDING"
+                        }
                     },
                     "next": [
-                        "flow-node-4"
+                        "flow-node-5"
                     ]
                 },
                 {
@@ -116,21 +125,21 @@
                         "type": "PREVIOUS"
                     },
                     "previous": [
-                        "flow-node-1"
+                        "flow-node-2"
                     ]
                 }
             ]
         },
         {
-            "id": "flow-node-4",
+            "id": "flow-node-5",
             "elements": [
                 "flow-display-header-GG456y7",
                 "flow-block-attributes-45owsew2",
-                "flow-action-go-back-yt5g5t"
+                "flow-action-next-yt5g5t"
             ],
             "actions": [
                 {
-                    "id": "flow-action-verify-otp-ssd5g6h",
+                    "id": "flow-action-next-yt5g5t",
                     "action": {
                         "type": "NEXT",
                         "meta": {
@@ -138,7 +147,7 @@
                         }
                     },
                     "next": [
-                        "flow-node-5"
+                        "COMPLETE"
                     ]
                 },
                 {
@@ -147,23 +156,8 @@
                         "type": "PREVIOUS"
                     },
                     "previous": [
-                        "flow-node-3"
+                        "flow-node-4"
                     ]
-                }
-            ]
-        },
-        {
-            "id": "flow-node-5",
-            "elements": [
-                "flow-display-header-45wTrU",
-                "flow-block-attributes-er203owe"
-            ],
-            "actions": [
-                {
-                    "id": "flow-action-done-5t8uJ6D3",
-                    "action": {
-                        "type": "DONE"
-                    }
                 }
             ]
         }

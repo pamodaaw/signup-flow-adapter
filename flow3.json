@@ -37,7 +37,7 @@
                     "id": "flow-action-password-onboarder-p563u9Yn",
                     "action": {
                         "type": "EXECUTOR",
-                        "name": "PasswordOnboarder"
+                        "name": ["PasswordOnboarder"]
                     },
                     "next": [
                         "flow-node-2"
@@ -47,7 +47,7 @@
                     "id": "flow-action-email-otp-verifier-5t8uJ6D3",
                     "action": {
                         "type": "EXECUTOR",
-                        "name": "EmailOTPVerifier"
+                        "name": ["EmailOTPVerifier"]
                     },
                     "next": [
                         "flow-node-3"
@@ -57,7 +57,7 @@
                     "id": "flow-action-google-sign-up-Rt8uJ6D3",
                     "action": {
                         "type": "EXECUTOR",
-                        "name": "GoogleSignUp"
+                        "name": ["GoogleSignUp"]
                     },
                     "next": [
                         "flow-node-5"
@@ -78,7 +78,7 @@
                     "action": {
                         "type": "NEXT",
                         "meta": {
-                            "actionType": "ATTRIBUTE_COLLECTION"
+                            "actionType": "CREDENTIAL_ONBOARDING"
                         }
                     },
                     "next": [
@@ -168,8 +168,11 @@
                 {
                     "id": "flow-action-done-5t8uJ6D3",
                     "action": {
-                        "type": "DONE"
-                    }
+                        "type": "SUBMIT"
+                    },
+                    "next": [
+                        "COMPLETE"
+                    ]
                 }
             ]
         }
